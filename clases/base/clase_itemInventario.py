@@ -28,6 +28,8 @@ class ItemInventario:
         print(f'cantidad : {self.cantidad}')
 
 
+print('guradas')
+
 
 medicamentos = ItemInventario('paracetamol',123,'pyzher' )
 print(medicamentos)

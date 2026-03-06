@@ -1,0 +1,2 @@
+class GestorInventario:
+    pass

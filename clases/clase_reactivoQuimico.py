@@ -1,0 +1,2 @@
+class ReactivoQuimico:
+    pass

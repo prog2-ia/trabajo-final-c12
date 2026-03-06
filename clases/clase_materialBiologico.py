@@ -1,0 +1,2 @@
+class MaterialBiologico:
+    pass

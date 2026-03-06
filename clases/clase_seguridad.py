@@ -1,0 +1,2 @@
+class seguridad:
+    pass

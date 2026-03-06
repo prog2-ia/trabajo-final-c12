@@ -1,0 +1,2 @@
+class IntrumentoAnalitico():
+    pass

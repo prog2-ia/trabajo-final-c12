@@ -10,8 +10,7 @@ class ItemInventario:
         self.cantidad = cantidad
 
     def __str__(self):
-        return f"{self.nombre} ,id : {self.id}, proveedor : {self.proveedor}, cantidad : {self.cantidad}"
-
+        return f"{self.nombre}, id: {self.id_item}, proveedor: {self.proveedor}, cantidad: {self.cantidad}"
 
     def consumir(self, unidades):
         self.cantidad += unidades
@@ -31,5 +30,5 @@ class ItemInventario:
 print('guradas')
 
 
-medicamentos = ItemInventario('paracetamol',123,'pyzher' )
+medicamentos = ItemInventario('paracetamol',123,'pyzher' , 21)
 print(medicamentos)

@@ -1,2 +1,1 @@
 class Laboratorio:
-    pass

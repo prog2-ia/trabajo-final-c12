@@ -13,11 +13,11 @@ class ItemInventario:
         return f"{self.nombre}, id: {self.id_item}, proveedor: {self.proveedor}, cantidad: {self.cantidad}"
 
     def consumir(self, unidades):
-        self.cantidad += unidades
         if unidades > self.cantidad:
-            print(f'Se han añadido {unidades} unidades')
+            print("No hay suficientes unidades")
         else:
-            print(f'se han acabado {unidades} unidades')
+            self.cantidad -= unidades
+            print(f'Se han consumido {unidades} unidades')
 
 
     def mostrar_info(self):
@@ -26,8 +26,17 @@ class ItemInventario:
         print(f'proveedor : {self.proveedor}')
         print(f'cantidad : {self.cantidad}')
 
+    @property
+    def cantidad(self):
+        return self._cantidad
 
-print('guradas')
+    @cantidad.setter
+    def cantidad(self, valor):
+        if valor < 0:
+            print("La cantidad no puede ser negativa")
+        else:
+            self._cantidad = valor
+
 
 
 medicamentos = ItemInventario('paracetamol',123,'pyzher' , 21)

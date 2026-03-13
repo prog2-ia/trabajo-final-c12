@@ -1,3 +1,3 @@
-from clase_itemInventario import ItemInventario
+from main import ItemInventario
 class consumible:
     pass

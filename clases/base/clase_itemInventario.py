@@ -39,5 +39,3 @@ class ItemInventario:
         else:
             self._cantidad += valor
             print(f"Se han añadido {valor} unidades")
-
-

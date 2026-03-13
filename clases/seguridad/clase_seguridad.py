@@ -1,4 +1,4 @@
-from clases.base.clase_itemInventario import ItemInventario
+from main import ItemInventario
 
 class Seguridad:
 

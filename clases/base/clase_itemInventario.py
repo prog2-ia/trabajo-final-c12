@@ -41,16 +41,3 @@ class ItemInventario:
             print(f"Se han añadido {valor} unidades")
 
 
-medicamentos = ItemInventario("paracetamol", 123, "pyzher", 21)
-print(medicamentos)
-
-medicamentos.cantidad = 30
-print(medicamentos.cantidad)
-
-medicamentos.consumir(10)
-print(medicamentos.cantidad)
-
-medicamentos.mostrar_info()
-
-medicamentos.cantidad = 21
-print(medicamentos.cantidad)

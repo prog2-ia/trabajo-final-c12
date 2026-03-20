@@ -1,7 +1,7 @@
 from clases.inventario.clase_gestorInventario import GestorInventario
 
 
-class SistemaLaboratorio:
+class SisteLaboratorio:
     def __init__(self):
         self.gestor = None
 

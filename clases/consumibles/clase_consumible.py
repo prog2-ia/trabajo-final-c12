@@ -1,3 +1,3 @@
 from main import ItemInventario
 class consumible:
-    pass
+    def __init__(self, cantidad):

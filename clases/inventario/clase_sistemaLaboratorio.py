@@ -1,39 +1,23 @@
 from clases.inventario.clase_gestorInventario import GestorInventario
 
 
-class SisteLaboratorio:
+class SistemaLaboratorio:
     def __init__(self):
-        self.gestor = None
+        self.gestorInventario = GestorInventario()
 
-        def inicializar(self):
-            print("--- Iniciando el Sistema ---")
-            self.gestor = GestorInventario()
-            print("Sistema listo.")
+    def iniciar(self):
+        print("="*50)
+        print("Iniciando el sistema de almacenamiento del laboratorio")
+        print("="*50)
 
-        def mostrarMenu(self):
-            print("\n" + "=" * 30)
-            print("   SISTEMA DE LABORATORIO")
-            print("=" * 30)
-            print("1. Registrar nuevo ítem (Reactivo/Equipo)")
-            print("2. Ver inventario completo")
-            print("3. Buscar ítem por nombre")
-            print("4. Eliminar ítem")
-            print("5. Salir")
-            print("=" * 30)
+        print(">>Inventario inicial: ")
+        self.gestorInventario.mostrar_inventario()
 
-        def ejecutar(self):
-            self.inicializar()
+        for item in self.gestorInventario.items:
+            if item.id_item.startswith("RC"):
+                item.consumir_stock_critico(50,usuario="Profesor Romero",motivo="Practica número 3")
 
-            while True:
-                self.mostrarMenu()
-                opcion = input("Seleccione una opción: ")
+                print("Verificando la Auditoria del reactivo")
+                item.ver_historial()
+                break
 
-                if opcion == "1":
-                    print("Llamando a gestor.agregar_item()...")
-                elif opcion == "2":
-                    print("Mostrando inventario...")
-                elif opcion == "5":
-                    print("Cerrando sistema. ¡Adiós!")
-                    break
-                else:
-                    print("Opción no válida, intente de nuevo.")

@@ -1,6 +1,5 @@
 from clases.base.clase_itemInventario import ItemInventario
 
-
 class Equipamiento(ItemInventario):
 
     # constructor de equipamiento

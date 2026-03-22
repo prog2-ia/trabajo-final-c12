@@ -57,6 +57,7 @@ class EquipoSeguridad(Equipamiento):
 
     print()
 
+    #Metodo Abstracto heredado de ItemInventario
     def mostrar_detalles(self):
         print(f" [PROTOCOLO DE SEGURIDAD:{self.nombre}")
         print(f"ID: {self.id_item} | Ubicación: {self.ubicacion}")

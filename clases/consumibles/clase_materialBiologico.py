@@ -52,7 +52,7 @@ class MaterialBiologico(Consumible):
     def mismo_tipo(self, otro_material):
         return self.tipo_muestra == otro_material.tipo_muestra
 
-
+    #Metodo Abstracto heredado de ItemInventario
     def mostrar_detalles(self):
         print(f"PROTOCOLO BIOLÓGICO: {self.nombre}")
         print(f"Tipo de Muestra: {self.tipo_muestra}")

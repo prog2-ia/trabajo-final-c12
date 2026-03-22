@@ -57,6 +57,7 @@ class InstrumentoAnalitico(Equipamiento):
 
     print()
 
+    #Metodo abstracto heredado de ItemInventario
     def mostrar_detalles(self):
         print(f"ESPECIFICACIONES TÉCNICAS: {self.nombre} ")
         print(f"ID: {self.id_item} | Análisis: {self.tipo_analisis}")

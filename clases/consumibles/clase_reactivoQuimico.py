@@ -49,7 +49,7 @@ class ReactivoQuimico(Consumible):
     def misma_formula(self, otro_reactivo):
         return self.formula_quimica == otro_reactivo.formula_quimica
 
-
+    #Metodo Abstracto heredado de ItemInventario
     def mostrar_detalles(self):
         print(f" FICHA TÉCNICA QUÍMICA")
         print(f"Reactivo: {self.nombre}")

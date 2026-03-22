@@ -11,6 +11,7 @@ class ReactivoCritico(Consumible, Auditoria):
     #Definimos Historial_uso como una lista en donde se guardaran los usos del reactivo
         self.historial_uso = []
 
+    #Metodo Abstracto heredado de ItemInventario
     def mostrar_detalles(self):
         print(f"[ALERTA: ITEM CRÍTICO] ")
         print(f"Material: {self.nombre} | Peligro: {self.nivel_peligro}")

@@ -1,12 +1,11 @@
 from clases.consumibles.clase_consumible import Consumible
 
 
-class MaterialBiologico(Consumible):
+class ReactivoQuimico(Consumible):
 
-    # constructor de material biologico
+    # constructor de reactivo quimico
     def __init__(self, id_item, nombre, cantidad, unidad_medida, requisitos_seguridad,
-                 umbral_critico, fecha_caducidad, lote,
-                 tipo_muestra, nivel_bioseguridad, temperatura_almacenamiento):
+                 umbral_critico, fecha_caducidad, lote, formula_quimica, nivel_toxicidad):
 
         # llama al constructor del padre
         super().__init__(id_item, nombre, cantidad, unidad_medida,
@@ -14,9 +13,8 @@ class MaterialBiologico(Consumible):
                          fecha_caducidad, lote)
 
         # atributos propios
-        self.tipo_muestra = tipo_muestra
-        self.nivel_bioseguridad = nivel_bioseguridad
-        self.temperatura_almacenamiento = temperatura_almacenamiento
+        self.formula_quimica = formula_quimica
+        self.nivel_toxicidad = nivel_toxicidad
 
 
     # metodo para mostrar el objeto
@@ -24,30 +22,29 @@ class MaterialBiologico(Consumible):
 
         info = super().__str__()
 
-        return f"{info} | Muestra: {self.tipo_muestra} | BSL: {self.nivel_bioseguridad} | Temp: {self.temperatura_almacenamiento}"
+        return f"{info} | Formula: {self.formula_quimica} | Toxicidad: {self.nivel_toxicidad}"
 
 
-    # muestra toda la informacion del material biologico
+    # muestra toda la informacion del reactivo
     def mostrar_info(self):
 
         super().mostrar_info()
-        print(f"Tipo de muestra: {self.tipo_muestra}")
-        print(f"Nivel de bioseguridad: {self.nivel_bioseguridad}")
-        print(f"Temperatura de almacenamiento: {self.temperatura_almacenamiento}")
+        print(f"Formula quimica: {self.formula_quimica}")
+        print(f"Nivel de toxicidad: {self.nivel_toxicidad}")
 
 
-    # cambia el tipo de muestra
-    def cambiar_tipo_muestra(self, nuevo_tipo):
-        self.tipo_muestra = nuevo_tipo
-        print("Tipo de muestra actualizado")
+    # cambia la formula quimica
+    def cambiar_formula(self, nueva_formula):
+        self.formula_quimica = nueva_formula
+        print("Formula quimica actualizada")
 
 
-    # cambia el nivel de bioseguridad
-    def cambiar_nivel_bioseguridad(self, nuevo_nivel):
-        self.nivel_bioseguridad = nuevo_nivel
-        print("Nivel de bioseguridad actualizado")
+    # cambia el nivel de toxicidad
+    def cambiar_toxicidad(self, nuevo_nivel):
+        self.nivel_toxicidad = nuevo_nivel
+        print("Nivel de toxicidad actualizado")
 
 
-    # compara si dos materiales son del mismo tipo
-    def mismo_tipo(self, otro_material):
-        return self.tipo_muestra == otro_material.tipo_muestra
+    # compara si dos reactivos tienen la misma formula
+    def misma_formula(self, otro_reactivo):
+        return self.formula_quimica == otro_reactivo.formula_quimica

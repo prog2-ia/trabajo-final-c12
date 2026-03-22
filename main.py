@@ -5,8 +5,6 @@ from clases.equipos.clase_equipoSeguridad import EquipoSeguridad
 from clases.equipos.clase_intrumentoAnalitico import InstrumentoAnalitico
 from clases.inventario.clase_sistemaLaboratorio import SistemaLaboratorio
 
-# (Tus importaciones aquí arriba...)
-
 if __name__ == "__main__":
 
     app = SistemaLaboratorio()

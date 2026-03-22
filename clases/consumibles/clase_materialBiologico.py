@@ -1,43 +1,39 @@
-class GestorInventario:
-
-    def __init__(self):
-        self.lista_items = []   # lista donde se guardan los objetos
+from clases.consumibles.clase_consumible import Consumible
 
 
-    def agregar_item(self, item):
-        self.lista_items.append(item)   # añade un objeto a la lista
-        print(f"Guardado: {item.nombre}")
+class MaterialBiologico(Consumible):
+
+    # Constructor
+    def __init__(self, id_item, nombre, cantidad, unidad_medida, requisitos_seguridad,
+                 umbral_critico, fecha_caducidad, lote,
+                 tipo_muestra, nivel_bioseguridad, temperatura_almacenamiento):
+
+        # Llamamos al constructor del padre
+        super().__init__(id_item, nombre, cantidad, unidad_medida,
+                         requisitos_seguridad, umbral_critico,
+                         fecha_caducidad, lote)
+
+        # Atributos propios de material biológico
+        self.tipo_muestra = tipo_muestra                  # Ej: sangre, tejido, bacteria
+        self.nivel_bioseguridad = nivel_bioseguridad      # Ej: BSL-1, BSL-2, BSL-3
+        self.temperatura_almacenamiento = temperatura_almacenamiento  # Ej: -20°C
 
 
-    def mostrar_todo(self):
+    # Método para mostrar el objeto
+    def __str__(self):
 
-        # comprueba si la lista esta vacia
-        if len(self.lista_items) == 0:
-            print("Inventario vacio")
+        # Información heredada
+        info_consumible = super().__str__()
 
+        # Añadimos lo propio
+        return f"{info_consumible} | Muestra: {self.tipo_muestra} | BSL: {self.nivel_bioseguridad} | Temp: {self.temperatura_almacenamiento}"
+
+
+    # Método para comprobar si necesita condiciones especiales
+    def necesita_refrigeracion(self):
+
+        # Si la temperatura es menor que 0, necesita frío
+        if "-" in str(self.temperatura_almacenamiento):
+            return True
         else:
-            # recorre todos los items
-            for item in self.lista_items:
-                print(item)
-
-
-    def buscar_por_nombre(self, nombre):
-
-        # recorre la lista buscando coincidencia
-        for item in self.lista_items:
-            if item.nombre.lower() == nombre.lower():
-                return item
-
-        return None   # no encontrado
-
-
-    def eliminar_item(self, nombre):
-
-        # recorre la lista para eliminar
-        for item in self.lista_items:
-            if item.nombre.lower() == nombre.lower():
-                self.lista_items.remove(item)
-                print(f"{nombre} eliminado")
-                return
-
-        print("No encontrado")
+            return False

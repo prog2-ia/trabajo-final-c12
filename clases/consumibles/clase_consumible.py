@@ -3,47 +3,34 @@ from clases.base.clase_itemInventario import ItemInventario
 
 class Consumible(ItemInventario):
 
-    # constructor de consumible
+    # Constructor de la clase hija
     def __init__(self, id_item, nombre, cantidad, unidad_medida, requisitos_seguridad,
                  umbral_critico, fecha_caducidad, lote):
 
-        # llama al constructor del padre
+        # Llamamos al constructor de la clase padre
         super().__init__(id_item, nombre, cantidad, unidad_medida,
                          requisitos_seguridad, umbral_critico)
 
-        # atributos propios
-        self.fecha_caducidad = fecha_caducidad
-        self.lote = lote
+        # Atributos propios de Consumible
+        self.fecha_caducidad = fecha_caducidad   # fecha en la que caduca
+        self.lote = lote                         # número o código de lote
 
 
-    # metodo para mostrar el objeto
+    # Método especial para mostrar el objeto
     def __str__(self):
 
-        info = super().__str__()
+        # Cogemos primero la información de la clase padre
+        info_item = super().__str__()
 
-        return f"{info} | lote: {self.lote} | caduca: {self.fecha_caducidad}"
-
-
-    # muestra toda la informacion del consumible
-    def mostrar_info(self):
-
-        super().mostrar_info()
-        print(f"Fecha de caducidad: {self.fecha_caducidad}")
-        print(f"Lote: {self.lote}")
+        # Le añadimos la información propia de Consumible
+        return f"{info_item} | lote: {self.lote} | caduca: {self.fecha_caducidad}"
 
 
-    # cambia la fecha de caducidad
-    def cambiar_fecha_caducidad(self, nueva_fecha):
-        self.fecha_caducidad = nueva_fecha
-        print("Fecha de caducidad actualizada")
+    # Método para comprobar si el consumible está caducado
+    def esta_caducado(self, fecha_actual):
 
-
-    # cambia el lote
-    def cambiar_lote(self, nuevo_lote):
-        self.lote = nuevo_lote
-        print("Lote actualizado")
-
-
-    # compara si dos consumibles tienen el mismo lote
-    def mismo_lote(self, otro_consumible):
-        return self.lote == otro_consumible.lote
+        # Comparamos la fecha actual con la fecha de caducidad
+        if fecha_actual > self.fecha_caducidad:
+            return True
+        else:
+            return False

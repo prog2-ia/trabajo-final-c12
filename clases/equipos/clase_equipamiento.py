@@ -54,3 +54,5 @@ class Equipamiento(ItemInventario):
     # compara si dos equipos tienen el mismo estado
     def mismo_estado(self, otro_equipo):
         return self.estado == otro_equipo.estado
+
+    print()

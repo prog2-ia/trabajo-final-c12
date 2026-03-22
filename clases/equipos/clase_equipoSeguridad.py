@@ -53,3 +53,6 @@ class EquipoSeguridad(Equipamiento):
     # compara si dos equipos estan en la misma ubicacion
     def misma_ubicacion(self, otro_equipo):
         return self.ubicacion == otro_equipo.ubicacion
+
+
+    print()

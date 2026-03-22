@@ -53,3 +53,6 @@ class InstrumentoAnalitico(Equipamiento):
     # compara si dos instrumentos tienen la misma precision
     def misma_precision(self, otro_instrumento):
         return self.precision == otro_instrumento.precision
+
+
+    print()

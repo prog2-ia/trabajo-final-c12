@@ -46,3 +46,5 @@ class ItemInventario:
     # Método para comprobar si el stock es crítico
     def es_critico(self):
         return self.cantidad <= self.umbral_critico
+
+    print()

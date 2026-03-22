@@ -99,3 +99,6 @@ class ItemInventario:
     # compara si dos items tienen el mismo id
     def mismo_id(self, otro_item):
         return self.id_item == otro_item.id_item
+
+
+    print()

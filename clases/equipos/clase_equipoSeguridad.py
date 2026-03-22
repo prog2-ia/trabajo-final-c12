@@ -56,3 +56,11 @@ class EquipoSeguridad(Equipamiento):
 
 
     print()
+
+    def mostrar_detalles(self):
+        print(f" [PROTOCOLO DE SEGURIDAD:{self.nombre}")
+        print(f"ID: {self.id_item} | Ubicación: {self.ubicacion}")
+        print(f"Estado Actual: {self.estado}")
+        print(f"Certificación: {self.certificado}")
+        print(f"Última Inspección: {self.fecha_mantenimiento}")
+        print(f"Requisitos Técnicos: {self.requisitos_seguridad}")

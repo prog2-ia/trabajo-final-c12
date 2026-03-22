@@ -44,7 +44,6 @@ if __name__ == "__main__":
     inst_2 = InstrumentoAnalitico("IA-02", "Espectrofotómetro", 1, "Corriente regulada", 1, "2023-11-10",
                                   "Cuantitativo", "190-1100nm", "Operativo")
 
-
     lista_inicial = [req_1, req_2, bio_1, bio_2, crit_1, crit_2, seg_1, seg_2, inst_1, inst_2]
 
     for objeto in lista_inicial:

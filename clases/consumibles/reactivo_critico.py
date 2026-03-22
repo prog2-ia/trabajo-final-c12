@@ -11,6 +11,13 @@ class ReactivoCritico(Consumible, Auditoria):
     #Definimos Historial_uso como una lista en donde se guardaran los usos del reactivo
         self.historial_uso = []
 
+    def mostrar_detalles(self):
+        print(f"[ALERTA: ITEM CRÍTICO] ")
+        print(f"Material: {self.nombre} | Peligro: {self.nivel_peligro}")
+        print(f"Seguridad: {self.requisitos_seguridad}")
+        print(f"Historial: {len(self.historial_uso)} registros de auditoría.")
+
+
     #Metodo que devuelve los datos de Reactivo critico como un string
     def __str__(self):
         info_consumible = super().__str__()
@@ -19,4 +26,4 @@ class ReactivoCritico(Consumible, Auditoria):
     #Metodo el cual obliga al usuario a registrar el uso del reactivo
     def consumir_stock_critico(self,cantidad_a_consumir,usuario,motivo):
         super().consumir_stock(cantidad_a_consumir)
-        self.registar_uso(usuario,cantidad_a_consumir,motivo)
+        self.registrar_uso(usuario,cantidad_a_consumir,motivo)

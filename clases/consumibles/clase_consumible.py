@@ -1,5 +1,5 @@
+from abc import abstractmethod
 from clases.base.clase_itemInventario import ItemInventario
-
 
 class Consumible(ItemInventario):
 

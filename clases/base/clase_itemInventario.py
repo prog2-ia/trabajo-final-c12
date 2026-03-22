@@ -1,4 +1,5 @@
-class ItemInventario:
+from abc import ABC, abstractmethod
+class ItemInventario(ABC):
 
     # constructor de la clase base
     def __init__(self, id_item, nombre, cantidad, unidad_medida, requisitos_seguridad, umbral_critico):
@@ -102,3 +103,7 @@ class ItemInventario:
 
 
     print()
+
+    @abstractmethod
+    def mostrar_detalles(self):
+        pass

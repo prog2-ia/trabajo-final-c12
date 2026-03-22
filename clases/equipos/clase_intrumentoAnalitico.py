@@ -56,3 +56,11 @@ class InstrumentoAnalitico(Equipamiento):
 
 
     print()
+
+    def mostrar_detalles(self):
+        print(f"ESPECIFICACIONES TÉCNICAS: {self.nombre} ")
+        print(f"ID: {self.id_item} | Análisis: {self.tipo_analisis}")
+        print(f"Precisión nominal: {self.precision}")
+        print(f"Estado del equipo: {self.estado}")
+        print(f"Próximo mantenimiento: {self.fecha_mantenimiento}")
+        print(f"Protocolo de uso: {self.requisitos_seguridad}")

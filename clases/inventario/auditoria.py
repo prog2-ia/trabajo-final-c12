@@ -2,7 +2,7 @@
 """Definimos la clase Auditorio, que lo unico que hace es tener 2 procesos, registrar el uso y ver el historial de uso
 estos datos se guardan en una lista "Historial de uso" """
 class Auditoria:
-    def registar_uso(self,usuario,cantidad,motivo):
+    def registrar_uso(self,usuario,cantidad,motivo):
         registro= f"Usuario {usuario} | Retiró {cantidad} | Motivo {motivo}"
         self.historial_uso.append(registro)
         print(f"Registro Guardado: {registro}")

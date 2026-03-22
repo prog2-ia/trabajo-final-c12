@@ -15,5 +15,6 @@ class GestorInventario:
         else:
             for item in self.items:
                 print(item)
-        print("--------------------------------------\n")
+                item.mostrar_detalles()
+                print("--------------------------------------\n")
 

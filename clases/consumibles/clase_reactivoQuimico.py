@@ -48,3 +48,12 @@ class ReactivoQuimico(Consumible):
     # compara si dos reactivos tienen la misma formula
     def misma_formula(self, otro_reactivo):
         return self.formula_quimica == otro_reactivo.formula_quimica
+
+
+    def mostrar_detalles(self):
+        print(f" FICHA TÉCNICA QUÍMICA")
+        print(f"Reactivo: {self.nombre}")
+        print(f"Fórmula: {self.formula_quimica}")
+        print(f"Nivel de Riesgo: {self.nivel_toxicidad}")
+        print(f"Lote de Control: {self.lote}")
+        print(f"Medidas de Seguridad: {self.requisitos_seguridad}")

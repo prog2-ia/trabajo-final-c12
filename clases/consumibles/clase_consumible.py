@@ -16,7 +16,7 @@ class Consumible(ItemInventario):
         self.lote = lote                         # número o código de lote
 
 
-    # Método especial para mostrar el objeto
+    # Metodo especial para mostrar el objeto
     def __str__(self):
 
         # Cogemos primero la información de la clase padre
@@ -26,7 +26,7 @@ class Consumible(ItemInventario):
         return f"{info_item} | lote: {self.lote} | caduca: {self.fecha_caducidad}"
 
 
-    # Método para comprobar si el consumible está caducado
+    # Metodo para comprobar si el consumible está caducado
     def esta_caducado(self, fecha_actual):
 
         # Comparamos la fecha actual con la fecha de caducidad

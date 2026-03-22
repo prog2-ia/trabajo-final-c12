@@ -17,7 +17,7 @@ class ReactivoQuimico(Consumible):
         self.nivel_toxicidad = nivel_toxicidad     # Ej: bajo, medio, alto
 
 
-    # Método para mostrar el objeto
+    # Metodo para mostrar el objeto
     def __str__(self):
 
         # Información del padre (Consumible + ItemInventario)
@@ -27,7 +27,7 @@ class ReactivoQuimico(Consumible):
         return f"{info_consumible} | Fórmula: {self.formula_quimica} | Toxicidad: {self.nivel_toxicidad}"
 
 
-    # Método simple para comprobar si es peligroso
+    # Metodo simple para comprobar si es peligroso
     def es_peligroso(self):
 
         # Si el nivel de toxicidad es alto, lo consideramos peligroso

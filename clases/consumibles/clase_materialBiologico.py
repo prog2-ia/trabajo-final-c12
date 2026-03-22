@@ -19,7 +19,7 @@ class MaterialBiologico(Consumible):
         self.temperatura_almacenamiento = temperatura_almacenamiento  # Ej: -20°C
 
 
-    # Método para mostrar el objeto
+    # Metodo para mostrar el objeto
     def __str__(self):
 
         # Información heredada
@@ -29,7 +29,7 @@ class MaterialBiologico(Consumible):
         return f"{info_consumible} | Muestra: {self.tipo_muestra} | BSL: {self.nivel_bioseguridad} | Temp: {self.temperatura_almacenamiento}"
 
 
-    # Método para comprobar si necesita condiciones especiales
+    # Metodo para comprobar si necesita condiciones especiales
     def necesita_refrigeracion(self):
 
         # Si la temperatura es menor que 0, necesita frío

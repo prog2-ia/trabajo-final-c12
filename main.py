@@ -49,6 +49,6 @@ if __name__ == "__main__":
     for objeto in lista_inicial:
         app.gestorInventario.agregar_item(objeto)
 
-    print("\n✅ Base de datos inicial cargada con 10 elementos.\n")
+    print("\n Base de datos inicial cargada con 10 elementos.\n")
 
     app.iniciar()

@@ -1,33 +1,34 @@
-from main import ItemInventario
-
 class Seguridad:
 
-    def __init__(self):
-        self.usuarios_autorizados = ["admin", "tecnico", "supervisor"]
-        self.registros = []
+    # constructor de seguridad
+    def __init__(self, nivel_seguridad, usuario_responsable):
+        self.nivel_seguridad = nivel_seguridad
+        self.usuario_responsable = usuario_responsable
 
-    def validar_acceso(self, usuario):
-        if usuario in self.usuarios_autorizados:
-            return True
-        else:
-            return False
 
-    def registrar_acceso(self, usuario, accion):
-        registro = f"Usuario: {usuario} - Acción: {accion}"
-        self.registros.append(registro)
-        print("Acceso registrado")
+    # metodo para mostrar el objeto
+    def __str__(self):
+        return f"Nivel de seguridad: {self.nivel_seguridad} | Responsable: {self.usuario_responsable}"
 
-    def alertar_riesgo(self, nivel, item):
-        print(f"Alerta de riesgo {nivel} con el item {item.nombre}")
 
-medicamento = ItemInventario("paracetamol", 123, "pyzher", 21)
+    # muestra toda la informacion de seguridad
+    def mostrar_info_seguridad(self):
+        print(f"Nivel de seguridad: {self.nivel_seguridad}")
+        print(f"Usuario responsable: {self.usuario_responsable}")
 
-seguridad = Seguridad()
 
-print(seguridad.validar_acceso("admin"))
-print(seguridad.validar_acceso("juan"))
+    # cambia el nivel de seguridad
+    def cambiar_nivel_seguridad(self, nuevo_nivel):
+        self.nivel_seguridad = nuevo_nivel
+        print("Nivel de seguridad actualizado")
 
-seguridad.registrar_acceso("admin", "ha entrado al sistema")
-seguridad.alertar_riesgo("alto", medicamento)
 
-print(seguridad.registros)
+    # cambia el usuario responsable
+    def cambiar_usuario_responsable(self, nuevo_usuario):
+        self.usuario_responsable = nuevo_usuario
+        print("Usuario responsable actualizado")
+
+
+    # comprueba si dos objetos tienen el mismo responsable
+    def mismo_responsable(self, otro_objeto):
+        return self.usuario_responsable == otro_objeto.usuario_responsable

@@ -1,37 +1,53 @@
 from clases.consumibles.clase_consumible import Consumible
 
 
-class ReactivoQuimico(Consumible):
+class MaterialBiologico(Consumible):
 
-    # Constructor
+    # constructor de material biologico
     def __init__(self, id_item, nombre, cantidad, unidad_medida, requisitos_seguridad,
-                 umbral_critico, fecha_caducidad, lote, formula_quimica, nivel_toxicidad):
+                 umbral_critico, fecha_caducidad, lote,
+                 tipo_muestra, nivel_bioseguridad, temperatura_almacenamiento):
 
-        # Llamamos al constructor del padre (Consumible)
+        # llama al constructor del padre
         super().__init__(id_item, nombre, cantidad, unidad_medida,
                          requisitos_seguridad, umbral_critico,
                          fecha_caducidad, lote)
 
-        # Atributos propios del reactivo químico
-        self.formula_quimica = formula_quimica     # Ej: H2O, NaCl
-        self.nivel_toxicidad = nivel_toxicidad     # Ej: bajo, medio, alto
+        # atributos propios
+        self.tipo_muestra = tipo_muestra
+        self.nivel_bioseguridad = nivel_bioseguridad
+        self.temperatura_almacenamiento = temperatura_almacenamiento
 
 
-    # Método para mostrar el objeto
+    # metodo para mostrar el objeto
     def __str__(self):
 
-        # Información del padre (Consumible + ItemInventario)
-        info_consumible = super().__str__()
+        info = super().__str__()
 
-        # Añadimos lo propio de esta clase
-        return f"{info_consumible} | Fórmula: {self.formula_quimica} | Toxicidad: {self.nivel_toxicidad}"
+        return f"{info} | Muestra: {self.tipo_muestra} | BSL: {self.nivel_bioseguridad} | Temp: {self.temperatura_almacenamiento}"
 
 
-    # Método simple para comprobar si es peligroso
-    def es_peligroso(self):
+    # muestra toda la informacion del material biologico
+    def mostrar_info(self):
 
-        # Si el nivel de toxicidad es alto, lo consideramos peligroso
-        if self.nivel_toxicidad.lower() == "alto":
-            return True
-        else:
-            return False
+        super().mostrar_info()
+        print(f"Tipo de muestra: {self.tipo_muestra}")
+        print(f"Nivel de bioseguridad: {self.nivel_bioseguridad}")
+        print(f"Temperatura de almacenamiento: {self.temperatura_almacenamiento}")
+
+
+    # cambia el tipo de muestra
+    def cambiar_tipo_muestra(self, nuevo_tipo):
+        self.tipo_muestra = nuevo_tipo
+        print("Tipo de muestra actualizado")
+
+
+    # cambia el nivel de bioseguridad
+    def cambiar_nivel_bioseguridad(self, nuevo_nivel):
+        self.nivel_bioseguridad = nuevo_nivel
+        print("Nivel de bioseguridad actualizado")
+
+
+    # compara si dos materiales son del mismo tipo
+    def mismo_tipo(self, otro_material):
+        return self.tipo_muestra == otro_material.tipo_muestra

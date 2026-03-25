@@ -5,7 +5,7 @@ class GestorInventario:
     def __init__(self):
         self.items = []
     #Agrega los nuevos items a la lista item
-    def agregar_item(self, nuevo_item):
+    def agregar_item(self,nuevo_item):
         self.items.append(nuevo_item)
         print("Item agregado")
     #Se encarga de mostrar el inventario completo, si esta vacio, muestra que esta vacio

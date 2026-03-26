@@ -89,7 +89,7 @@ class SistemaLaboratorio:
                                 except ValueError:
                                     print(f"{entrada} no es un número válido. Por favor solo utiliza dígitos ")
 
-                            # AHORA agregamos el ítem (Fuera del bucle de validación, pero dentro del if)
+
                             nuevo_item = ReactivoQuimico(id_item, nombre, cantidad, unidad_medida,
                                                          requisitos_seguridad, umbral_critico,
                                                          fecha_caducidad, lote, formula_quimica, nivel_toxicidad)

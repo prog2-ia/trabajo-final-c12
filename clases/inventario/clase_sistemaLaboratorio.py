@@ -20,9 +20,9 @@ class SistemaLaboratorio:
             ejecutando_sistema = True
 
             while ejecutando_sistema:
-                print("\nBienvenido al Sistema de almacenamiento del Laboratorio, escoja una acción (1,2,3,4,5): ")
+                print("\nBienvenido al Sistema de almacenamiento del Laboratorio, escoja una acción (1,2,3,4,5,6): ")
                 print(
-                    " 1: Mostrar Inventario\n 2: Añadir Item\n 3: Borrar Item\n 4: Registrar uso de un Item\n 5: Salir del Sistema")
+                    " 1: Mostrar Inventario\n 2: Añadir Item\n 3: Borrar Item\n 4: Registrar uso de un Item\n 5: Aumentar Stock\n 6: Salir del Sistema")
 
                 opcion = input("Introduce tu acción elegida: ")
 
@@ -237,7 +237,14 @@ class SistemaLaboratorio:
                     id_borrar= input(("Introduce el Id del Item a borrar:"))
                     self.gestorInventario.borrar_item(id_borrar)
 
+                elif opcion =="4":
+                    print(">> Registro de Uso")
+                    id_uso=input("Introduce el ID del item a usar: ")
+
                 elif opcion == "5":
+                    print(">>Aumentar Stock")
+                    id_uso=input("Introduce el ID del item a aumentar: ")
+                elif opcion == "6":
                     ejecutando_sistema = False
 
                 else:

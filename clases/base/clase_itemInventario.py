@@ -106,4 +106,5 @@ class ItemInventario(ABC):
 
     @abstractmethod
     def mostrar_detalles(self):
+        print("Detalles")
         pass

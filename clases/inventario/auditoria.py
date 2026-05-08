@@ -2,12 +2,12 @@
 """Definimos la clase Auditorio, que lo unico que hace es tener 2 procesos, registrar el uso y ver el historial de uso
 estos datos se guardan en una lista "Historial de uso" """
 class Auditoria:
-    def __init__(self):
+    def __init__(self)->None:
         if not hasattr(self, 'historial_uso'):
             self.historial_uso = []
 
 
-    def registrar_uso(self,usuario,cantidad,motivo):
+    def registrar_uso(self,usuario,cantidad,motivo)->None:
         if not hasattr(self, 'historial_uso'):
             self.historial_uso = []
 
@@ -16,7 +16,7 @@ class Auditoria:
         print(f"Registro Guardado: {registro}")
 
 
-    def ver_historial(self):
+    def ver_historial(self)->None:
         print(f"Historial de Auditoría: {self.nombre}")
         if not self.historial_uso:
             print("No existe historial de uso")

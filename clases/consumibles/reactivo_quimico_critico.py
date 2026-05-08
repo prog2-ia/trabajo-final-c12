@@ -1,22 +1,20 @@
 from datetime import datetime
-from clases.consumibles.clase_materialBiologico import MaterialBiologico
+from clases.consumibles.clase_reactivoQuimico import ReactivoQuimico
 from clases.inventario.auditoria import Auditoria
 
 
-class MaterialBiologicoCritico(MaterialBiologico, Auditoria):
+class ReactivoQuimicoCritico(ReactivoQuimico, Auditoria):
 
-    # constructor de material biologico critico
+    # constructor de reactivo quimico critico
     def __init__(self, id_item: str, nombre: str, cantidad: int, unidad_medida: str,
                  requisitos_seguridad: str, umbral_critico: int,
                  fecha_caducidad: datetime, lote: str,
-                 tipo_muestra: str, nivel_bioseguridad: int,
-                 temperatura_almacenamiento: int, nivel_peligro: int) -> None:
+                 formula_quimica: str, nivel_toxicidad: int, nivel_peligro: int) -> None:
 
-        # llama al constructor de MaterialBiologico
-        MaterialBiologico.__init__(self, id_item, nombre, cantidad, unidad_medida,
-                                   requisitos_seguridad, umbral_critico,
-                                   fecha_caducidad, lote, tipo_muestra,
-                                   nivel_bioseguridad, temperatura_almacenamiento)
+        # llama al constructor de ReactivoQuimico
+        ReactivoQuimico.__init__(self, id_item, nombre, cantidad, unidad_medida,
+                                 requisitos_seguridad, umbral_critico,
+                                 fecha_caducidad, lote, formula_quimica, nivel_toxicidad)
 
         # llama al constructor de Auditoria
         Auditoria.__init__(self)
@@ -34,7 +32,7 @@ class MaterialBiologicoCritico(MaterialBiologico, Auditoria):
     # consume stock y obliga a registrar el uso en el historial
     def consumir_stock_critico(self, cantidad: int, usuario: str, motivo: str) -> None:
         if self.nivel_peligro >= 4:
-            print(f"AVISO: Manipulando material biologico de ALTO PELIGRO (nivel {self.nivel_peligro}/5)")
+            print(f"AVISO: Manipulando reactivo quimico de ALTO PELIGRO (nivel {self.nivel_peligro}/5)")
         super().consumir_stock(cantidad)
         self.registrar_uso(usuario, cantidad, motivo)
 
@@ -49,10 +47,11 @@ class MaterialBiologicoCritico(MaterialBiologico, Auditoria):
 
     # metodo abstracto heredado de ItemInventario
     def mostrar_detalles(self) -> None:
-        print(f"ALERTA: MATERIAL BIOLOGICO CRITICO")
-        print(f"Material: {self.nombre} | Peligro: {self.nivel_peligro}/5")
-        print(f"Tipo de muestra: {self.tipo_muestra} | BSL-{self.nivel_bioseguridad}")
-        print(f"Temperatura: {self.temperatura_almacenamiento}C")
+        print(f"ALERTA: REACTIVO QUIMICO CRITICO")
+        print(f"Reactivo: {self.nombre} | Peligro: {self.nivel_peligro}/5")
+        print(f"Formula: {self.formula_quimica} | Toxicidad: {self.nivel_toxicidad}/5")
+        if self.es_alta_toxicidad():
+            print("AVISO: Reactivo de ALTA TOXICIDAD")
         print(f"Seguridad: {self.requisitos_seguridad}")
         print(f"Caducidad: {self.fecha_caducidad.strftime('%d/%m/%Y')}")
         self.mostrar_estado_caducidad()

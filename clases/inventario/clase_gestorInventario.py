@@ -2,7 +2,7 @@
 #Definimos la clase GestorInventario
 class GestorInventario:
     #Dejamos una lista vacia en la cual se almacenen los objetos
-    def __init__(self):
+    def __init__(self)->None:
         self.items = []
     #Agrega los nuevos items a la lista item
     def agregar_item(self,nuevo_item):

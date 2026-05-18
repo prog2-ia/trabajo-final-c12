@@ -3,8 +3,8 @@ from clases.base.clase_itemInventario import ItemInventario
 class Equipamiento(ItemInventario):
 
     # constructor de equipamiento
-    def __init__(self, id_item, nombre, cantidad, requisitos_seguridad,
-                 umbral_critico, fecha_mantenimiento, estado="Operativo"):
+    def __init__(self, id_item:str, nombre:str, cantidad:int, requisitos_seguridad:str,
+                 umbral_critico:int, fecha_mantenimiento:str, estado:str="Operativo"):
 
         # llama al constructor del padre
         super().__init__(id_item, nombre, cantidad, "unidades",
@@ -16,7 +16,7 @@ class Equipamiento(ItemInventario):
 
 
     # metodo para mostrar el objeto
-    def __str__(self):
+    def __str__(self)->str:
 
         info = super().__str__()
 
@@ -24,7 +24,7 @@ class Equipamiento(ItemInventario):
 
 
     # muestra toda la informacion del equipamiento
-    def mostrar_info(self):
+    def mostrar_info(self)->None:
 
         super().mostrar_info()
         print(f"Fecha de mantenimiento: {self.fecha_mantenimiento}")
@@ -32,13 +32,13 @@ class Equipamiento(ItemInventario):
 
 
     # pone el equipo como operativo despues del mantenimiento
-    def registrar_mantenimiento(self, nueva_fecha):
+    def registrar_mantenimiento(self, nueva_fecha:str)->None:
         self.fecha_mantenimiento = nueva_fecha
         self.estado = "Operativo"
         print(f"Mantenimiento actualizado para {self.nombre}")
 
 
     # compara si dos equipos tienen el mismo estado
-    def mismo_estado(self, otro_equipo):
+    def mismo_estado(self, otro_equipo:"Equipamiento")->bool:
         return self.estado == otro_equipo.estado
 

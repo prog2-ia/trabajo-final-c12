@@ -2,12 +2,15 @@
 """Definimos la clase Auditorio, que lo unico que hace es tener 2 procesos, registrar el uso y ver el historial de uso
 estos datos se guardan en una lista "Historial de uso" """
 class Auditoria:
+
+    nombre=""
+
     def __init__(self)->None:
         if not hasattr(self, 'historial_uso'):
-            self.historial_uso = []
+            self.historial_uso = [] #type: list[str]
 
 
-    def registrar_uso(self,usuario,cantidad,motivo)->None:
+    def registrar_uso(self,usuario: str,cantidad:int,motivo:str)->None:
 
         registro= f"Usuario {usuario} | Retiró {cantidad} | Motivo {motivo}"
         self.historial_uso.append(registro)

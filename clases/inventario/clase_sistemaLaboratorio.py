@@ -1,5 +1,5 @@
 from clases.equipos.clase_equipoSeguridad import EquipoSeguridad
-from clases.equipos.clase_intrumentoAnalitico import InstrumentoAnalitico
+from clases.equipos.clase_instrumentoAnalitico import InstrumentoAnalitico
 from clases.inventario.clase_gestorInventario import GestorInventario
 from clases.consumibles.clase_reactivoQuimico import ReactivoQuimico
 from clases.consumibles.clase_materialBiologico import MaterialBiologico
@@ -9,15 +9,15 @@ from datetime import datetime
 
 
 class SistemaLaboratorio:
-    def __init__(self):
+    def __init__(self)->None:
         self.gestorInventario = GestorInventario()
 
-    def iniciar(self):
+    def iniciar(self)->None:
         print("=" * 50)
         print("Iniciando el sistema de almacenamiento del laboratorio")
         print("=" * 50)
 
-        def menu():
+        def menu()->None:
             # Variable para controlar el bucle principal del menú
             ejecutando_sistema = True
 
@@ -76,26 +76,25 @@ class SistemaLaboratorio:
                             print("Si desea añadir más cantidad, utiliza la opción 5 (Aumentar Stock).")
                             continue
                         nombre = input("Nombre: ")
-                        cantidad = input("Cantidad: ")
+
                         while True:
-                            if cantidad.isdigit():
-                                cantidad=int(cantidad)
+                            try:
+                                cantidad = int(input("Cantidad: "))
                                 break
 
-                            else:
-                                print(f"{cantidad} no es un número, porfavor inserta un número entero ")
-                                cantidad = input("Cantidad: ")
+                            except ValueError:
+                                print("Porfavor ingrese un número")
 
                         unidad_medida = input("Unidad de Medida: ")
                         requisitos_seguridad = input("Requisitos de Seguridad: ")
-                        umbral_critico = input("Umbral Crítico: ")
+
                         while True:
-                            if umbral_critico.isdigit():
-                                umbral_critico=int(umbral_critico)
+                            try:
+                                umbral_critico = int(input("Umbral Crítico: "))
                                 break
-                            else:
-                                print(f"{umbral_critico} valor no aceptado, porfavor inserta un número")
-                                umbral_critico=input("Umbral Critico: ")
+
+                            except ValueError:
+                                print("Porfavor ingresa un numero entero")
 
                         while True:
                             fecha_caducidad_str = input("Fecha de Caducidad (DD/MM/AAAA): ")
@@ -131,18 +130,20 @@ class SistemaLaboratorio:
 
                                 nivel_peligro = int(input("Introduce el nivel de peligro (1-5): "))
 
-                                nuevo_item = ReactivoQuimicoCritico(id_item, nombre, cantidad, unidad_medida,
+                                nuevo_reactivo_critico = ReactivoQuimicoCritico(id_item, nombre, cantidad, unidad_medida,
                                                                     requisitos_seguridad, umbral_critico,
                                                                     fecha_caducidad, lote, formula_quimica,
                                                                     nivel_toxicidad, nivel_peligro)
+                                self.gestorInventario.agregar_item(nuevo_reactivo_critico)
                             else:
 
-                                nuevo_item = ReactivoQuimico(id_item, nombre, cantidad, unidad_medida,
+                                nuevo_reactivo = ReactivoQuimico(id_item, nombre, cantidad, unidad_medida,
                                                              requisitos_seguridad, umbral_critico,
                                                              fecha_caducidad, lote, formula_quimica,
                                                              nivel_toxicidad)
+                                self.gestorInventario.agregar_item(nuevo_reactivo)
 
-                            self.gestorInventario.agregar_item(nuevo_item)
+
 
                         if tipo_consumible=="2":
                             tipo_muestra = input("Tipo de Muestra: ")
@@ -177,19 +178,20 @@ class SistemaLaboratorio:
 
                                 nivel_peligro = int(input("Introduce el nivel de peligro (1-5): "))
 
-                                nuevo_item = MaterialBiologicoCritico(id_item, nombre, cantidad, unidad_medida,
+                                nuevo_material_critico = MaterialBiologicoCritico(id_item, nombre, cantidad, unidad_medida,
                                                                 requisitos_seguridad, umbral_critico,
                                                                 fecha_caducidad, lote,tipo_muestra,nivel_bioseguridad,temperatura_almacenamiento
                                                                 ,nivel_peligro)
+                                self.gestorInventario.agregar_item(nuevo_material_critico)
                             else:
 
-                                nuevo_item = MaterialBiologico(id_item, nombre, cantidad, unidad_medida,
+                                nuevo_material = MaterialBiologico(id_item, nombre, cantidad, unidad_medida,
                                                          requisitos_seguridad, umbral_critico,
                                                          fecha_caducidad, lote,tipo_muestra,nivel_bioseguridad,temperatura_almacenamiento)
+                                self.gestorInventario.agregar_item(nuevo_material)
 
 
 
-                            self.gestorInventario.agregar_item(nuevo_item)
                     if tipo_item == "2":
                         print("¿Que tipo de Equipamiento quieres registrar?\n 1: Equipo de Seguridad | 2: Instrumento Analítico")
                         while True:
@@ -209,35 +211,25 @@ class SistemaLaboratorio:
                             print("Si desea añadir más cantidad, utiliza la opción 5 (Aumentar Stock).")
                             continue
                         nombre = input("Nombre: ")
-                        cantidad = input("Cantidad: ")
-                        while True:
-                            if cantidad.isdigit():
-                                cantidad=int(cantidad)
-                                break
-
-                            else:
-                                print(f"{cantidad} no es un número, porfavor inserta un número entero ")
-                                cantidad = input("Cantidad: ")
-
-                        unidad_medida = "unidades"
-                        requisitos_seguridad = input("Requisitos de Seguridad: ")
-                        umbral_critico = input("Umbral Crítico: ")
-                        while True:
-                            if umbral_critico.isdigit():
-                                umbral_critico=int(umbral_critico)
-                                break
-                            else:
-                                print(f"{umbral_critico} valor no aceptado, porfavor inserta un número")
-                                umbral_critico=input("Umbral Critico: ")
 
                         while True:
-                            fecha_mantenimiento_str = input("Fecha del último mantenimiento (DD/MM/AAAA): ")
                             try:
-                                fecha_mantenimiento = datetime.strptime(fecha_mantenimiento_str, "%d/%m/%Y")
+                                cantidad = int(input("Cantidad: "))
+                                break
+
+                            except ValueError:
+                                print("Porfavor ingresa solo número enteros")
+
+                        requisitos_seguridad = input("Requisitos de Seguridad: ")
+
+                        while True:
+                            try:
+                                umbral_critico = int(input("Umbral Crítico: "))
                                 break
                             except ValueError:
-                                print(
-                                    f"'{fecha_mantenimiento_str}' no es un valor aceptado. Por favor, introduce una fecha válida (DD/MM/AAAA).")
+                                print("Valor Incorrecto, inserta un número entero ")
+
+                        fecha_mantenimiento = input("Fecha Mantenimiento: ")
 
                         estado = input("Estado del Equipo de Seguridad: ")
 
@@ -268,11 +260,11 @@ class SistemaLaboratorio:
                                 except ValueError:
                                     print(f"{entrada} no es un número válido. Por favor solo utiliza dígitos ")
 
-                            nuevo_item = InstrumentoAnalitico(id_item, nombre, cantidad, unidad_medida,
+                            nuevo_instrumento = InstrumentoAnalitico(id_item, nombre, cantidad,
                                                                 requisitos_seguridad, umbral_critico,
                                                                 fecha_mantenimiento,tipo_analisis,precision)
 
-                            self.gestorInventario.agregar_item(nuevo_item)
+                            self.gestorInventario.agregar_item(nuevo_instrumento)
                             print("Item añadido con éxito.")
 
                 elif opcion=="3":

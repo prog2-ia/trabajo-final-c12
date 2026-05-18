@@ -46,12 +46,6 @@ class Consumible(ItemInventario):
             print(f"OK: {self.nombre} caduca en {dias} dias ({self.fecha_caducidad.strftime('%d/%m/%Y')})")
 
 
-    # cambia la fecha de caducidad
-    def cambiar_fecha_caducidad(self, nueva_fecha: datetime) -> None:
-        self.fecha_caducidad = nueva_fecha
-        print("Fecha de caducidad actualizada")
-
-
     # cambia el lote
     def cambiar_lote(self, nuevo_lote: str) -> None:
         if not nuevo_lote.strip():

@@ -32,19 +32,6 @@ class EquipoSeguridad(Equipamiento):
         print(f"Ubicacion: {self.ubicacion}")
         print(f"Certificado: {self.certificado}")
 
-
-    # cambia la ubicacion
-    def cambiar_ubicacion(self, nueva_ubicacion):
-        self.ubicacion = nueva_ubicacion
-        print("Ubicacion actualizada")
-
-
-    # cambia el certificado
-    def cambiar_certificado(self, nuevo_certificado):
-        self.certificado = nuevo_certificado
-        print("Certificado actualizado")
-
-
     # realiza una prueba del equipo
     def realizar_prueba(self):
         print(f"Prueba realizada en {self.nombre}")
@@ -55,7 +42,6 @@ class EquipoSeguridad(Equipamiento):
         return self.ubicacion == otro_equipo.ubicacion
 
 
-    print()
 
     #Metodo Abstracto heredado de ItemInventario
     def mostrar_detalles(self):

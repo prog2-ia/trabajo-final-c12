@@ -8,8 +8,6 @@ class Auditoria:
 
 
     def registrar_uso(self,usuario,cantidad,motivo)->None:
-        if not hasattr(self, 'historial_uso'):
-            self.historial_uso = []
 
         registro= f"Usuario {usuario} | Retiró {cantidad} | Motivo {motivo}"
         self.historial_uso.append(registro)

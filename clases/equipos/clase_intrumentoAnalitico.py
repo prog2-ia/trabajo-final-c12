@@ -33,18 +33,6 @@ class InstrumentoAnalitico(Equipamiento):
         print(f"Precision: {self.precision}")
 
 
-    # cambia el tipo de analisis
-    def cambiar_tipo_analisis(self, nuevo_tipo):
-        self.tipo_analisis = nuevo_tipo
-        print("Tipo de analisis actualizado")
-
-
-    # cambia la precision
-    def cambiar_precision(self, nueva_precision):
-        self.precision = nueva_precision
-        print("Precision actualizada")
-
-
     # simula un analisis
     def realizar_analisis(self):
         print(f"Analisis realizado con {self.nombre}")
@@ -54,8 +42,6 @@ class InstrumentoAnalitico(Equipamiento):
     def misma_precision(self, otro_instrumento):
         return self.precision == otro_instrumento.precision
 
-
-    print()
 
     #Metodo abstracto heredado de ItemInventario
     def mostrar_detalles(self):

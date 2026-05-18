@@ -28,7 +28,7 @@ class SistemaLaboratorio:
 
                 opcion = input("Introduce tu acción elegida: ")
 
-                if opcion not in ["1","2","3","4","5"]:
+                if opcion not in ["1","2","3","4","5","6"]:
                     print("\n","Introduce una opción válida")
                     continue
 
@@ -69,6 +69,12 @@ class SistemaLaboratorio:
 
 
                         id_item = input("Id Item: ")
+                        item_existente = self.gestorInventario.buscar_item_id(id_item)
+
+                        if item_existente is not None:
+                            print(f"Error: Ya existe un ítem registrado con el ID '{id_item}' ({item_existente.nombre}).")
+                            print("Si desea añadir más cantidad, utiliza la opción 5 (Aumentar Stock).")
+                            continue
                         nombre = input("Nombre: ")
                         cantidad = input("Cantidad: ")
                         while True:
@@ -196,6 +202,12 @@ class SistemaLaboratorio:
 
 
                         id_item = input("Id Item: ")
+                        item_existente = self.gestorInventario.buscar_item_id(id_item)
+
+                        if item_existente is not None:
+                            print(f"Error: Ya existe un ítem registrado con el ID '{id_item}' ({item_existente.nombre}).")
+                            print("Si desea añadir más cantidad, utiliza la opción 5 (Aumentar Stock).")
+                            continue
                         nombre = input("Nombre: ")
                         cantidad = input("Cantidad: ")
                         while True:

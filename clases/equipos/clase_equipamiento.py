@@ -31,18 +31,6 @@ class Equipamiento(ItemInventario):
         print(f"Estado: {self.estado}")
 
 
-    # cambia la fecha de mantenimiento
-    def cambiar_fecha_mantenimiento(self, nueva_fecha):
-        self.fecha_mantenimiento = nueva_fecha
-        print("Fecha de mantenimiento actualizada")
-
-
-    # cambia el estado del equipo
-    def cambiar_estado(self, nuevo_estado):
-        self.estado = nuevo_estado
-        print("Estado actualizado")
-
-
     # pone el equipo como operativo despues del mantenimiento
     def registrar_mantenimiento(self, nueva_fecha):
         self.fecha_mantenimiento = nueva_fecha
@@ -54,4 +42,3 @@ class Equipamiento(ItemInventario):
     def mismo_estado(self, otro_equipo):
         return self.estado == otro_equipo.estado
 
-    print()

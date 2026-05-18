@@ -3,6 +3,8 @@ from clases.equipos.clase_intrumentoAnalitico import InstrumentoAnalitico
 from clases.inventario.clase_gestorInventario import GestorInventario
 from clases.consumibles.clase_reactivoQuimico import ReactivoQuimico
 from clases.consumibles.clase_materialBiologico import MaterialBiologico
+from clases.consumibles.reactivo_quimico_critico import ReactivoQuimicoCritico
+from clases.consumibles.material_biologico_critico import MaterialBiologicoCritico
 from datetime import datetime
 
 
@@ -148,12 +150,29 @@ class SistemaLaboratorio:
                                 except ValueError:
                                     print(f"{entrada} no es un número válido. Por favor solo utiliza dígitos ")
 
-                            nuevo_item = MaterialBiologico(id_item, nombre, cantidad, unidad_medida,
-                                                         requisitos_seguridad, umbral_critico,
-                                                         fecha_caducidad, lote,tipo_muestra,nivel_bioseguridad, temperatura_almacenamiento)
-                            self.gestorInventario.agregar_item(nuevo_item)
-                            print("Item añadido con éxito.")
 
+
+
+                            respuesta = input("¿Este reactivo es de alto peligro/crítico? (s/n): ").strip().lower()
+
+                            if respuesta == 's':
+                            # Pides el dato extra que solo tienen los críticos
+                                nivel_peligro = int(input("Introduce el nivel de peligro (1-5): "))
+
+                            # Instancias la clase CRÍTICA
+                                nuevo_item = MaterialBiologicoCritico(id_item, nombre, cantidad, unidad_medida,
+                                                                requisitos_seguridad, umbral_critico,
+                                                                fecha_caducidad, lote,tipo_muestra,nivel_bioseguridad,temperatura_almacenamiento
+                                                                ,nivel_peligro)
+                            else:
+                            # Instancias la clase NORMAL (no pide nivel_peligro ni tiene auditoría)
+                                nuevo_item = MaterialBiologico(id_item, nombre, cantidad, unidad_medida,
+                                                         requisitos_seguridad, umbral_critico,
+                                                         fecha_caducidad, lote,tipo_muestra,nivel_bioseguridad,temperatura_almacenamiento)
+
+
+
+                            self.gestorInventario.agregar_item(nuevo_item)
                     if tipo_item == "2":
                         print("¿Que tipo de Equipamiento quieres registrar?\n 1: Equipo de Seguridad | 2: Instrumento Analítico")
                         while True:
@@ -227,19 +246,49 @@ class SistemaLaboratorio:
                                     print(f"{entrada} no es un número válido. Por favor solo utiliza dígitos ")
 
                             nuevo_item = InstrumentoAnalitico(id_item, nombre, cantidad, unidad_medida,
-                                                         requisitos_seguridad, umbral_critico,
-                                                         fecha_mantenimiento,tipo_analisis,precision)
+                                                                requisitos_seguridad, umbral_critico,
+                                                                fecha_mantenimiento,tipo_analisis,precision)
+
                             self.gestorInventario.agregar_item(nuevo_item)
                             print("Item añadido con éxito.")
 
                 elif opcion=="3":
                     print(">BORRAR ITEM")
-                    id_borrar= input(("Introduce el Id del Item a borrar:"))
+                    id_borrar= input("Introduce el Id del Item a borrar:")
                     self.gestorInventario.borrar_item(id_borrar)
 
                 elif opcion =="4":
+
                     print(">> Registro de Uso")
                     id_uso=input("Introduce el ID del item a usar: ")
+
+                    item=self.gestorInventario.buscar_item_id(id_uso)
+
+                    if item is None:
+                        print("Item no encontrado/Item inexistente")
+                    else:
+                        if hasattr(item,"consumir_stock_critico"):
+                            print(f"ALERTA!!!, EL SIGUIENTE ITEM {item.nombre} REQUIERE AUDITORÍA")
+                            try:
+                                cantidad=int(input("Introduce la cantidad a retirar:"))
+                                usuario= input("Introduce tu nombre/usuario: ")
+                                motivo= input("Introduce el motivo de retiro: ")
+
+                                item.consumir_stock_critico(cantidad,usuario,motivo)
+                            except ValueError as e:
+                                print(f"Error en el siguiente dato: {e}")
+
+
+                        elif hasattr(item,"consumir_stock"):
+                            try:
+                                cantidad=int(input("Introduce la cantidad a usar:"))
+                                item.consumir_stock(cantidad)
+                                print(f"Se han consumido {cantidad} {item.unidad_medida} de {item.nombre}")
+                            except ValueError as e:
+                                print(f"Error en el siguiente dato: {e}")
+
+
+
 
                 elif opcion == "5":
                     print(">>Aumentar Stock")

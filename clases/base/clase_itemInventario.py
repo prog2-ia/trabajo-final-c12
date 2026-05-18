@@ -43,6 +43,7 @@ class ItemInventario(ABC):
 
     # muestra toda la informacion del item
     def mostrar_info(self) -> None:
+        print(f"Clase: {type(self).__name__}")
         print(f"Id: {self.id_item}")
         print(f"Nombre: {self.nombre}")
         print(f"Cantidad: {self.cantidad}")

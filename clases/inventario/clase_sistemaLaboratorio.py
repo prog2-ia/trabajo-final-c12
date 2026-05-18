@@ -119,12 +119,24 @@ class SistemaLaboratorio:
                                     print(f"{entrada} no es un número válido. Por favor solo utiliza dígitos ")
 
 
-                            nuevo_item = ReactivoQuimico(id_item, nombre, cantidad, unidad_medida,
-                                                         requisitos_seguridad, umbral_critico,
-                                                         fecha_caducidad, lote, formula_quimica, nivel_toxicidad)
-                            self.gestorInventario.agregar_item(nuevo_item)
-                            print("Item añadido con éxito.")
+                            respuesta = input("¿Este reactivo es de alto peligro/crítico? (s/n): ").strip().lower()
 
+                            if respuesta == 's':
+
+                                nivel_peligro = int(input("Introduce el nivel de peligro (1-5): "))
+
+                                nuevo_item = ReactivoQuimicoCritico(id_item, nombre, cantidad, unidad_medida,
+                                                                    requisitos_seguridad, umbral_critico,
+                                                                    fecha_caducidad, lote, formula_quimica,
+                                                                    nivel_toxicidad, nivel_peligro)
+                            else:
+
+                                nuevo_item = ReactivoQuimico(id_item, nombre, cantidad, unidad_medida,
+                                                             requisitos_seguridad, umbral_critico,
+                                                             fecha_caducidad, lote, formula_quimica,
+                                                             nivel_toxicidad)
+
+                            self.gestorInventario.agregar_item(nuevo_item)
 
                         if tipo_consumible=="2":
                             tipo_muestra = input("Tipo de Muestra: ")
@@ -156,16 +168,15 @@ class SistemaLaboratorio:
                             respuesta = input("¿Este reactivo es de alto peligro/crítico? (s/n): ").strip().lower()
 
                             if respuesta == 's':
-                            # Pides el dato extra que solo tienen los críticos
+
                                 nivel_peligro = int(input("Introduce el nivel de peligro (1-5): "))
 
-                            # Instancias la clase CRÍTICA
                                 nuevo_item = MaterialBiologicoCritico(id_item, nombre, cantidad, unidad_medida,
                                                                 requisitos_seguridad, umbral_critico,
                                                                 fecha_caducidad, lote,tipo_muestra,nivel_bioseguridad,temperatura_almacenamiento
                                                                 ,nivel_peligro)
                             else:
-                            # Instancias la clase NORMAL (no pide nivel_peligro ni tiene auditoría)
+
                                 nuevo_item = MaterialBiologico(id_item, nombre, cantidad, unidad_medida,
                                                          requisitos_seguridad, umbral_critico,
                                                          fecha_caducidad, lote,tipo_muestra,nivel_bioseguridad,temperatura_almacenamiento)
@@ -291,8 +302,34 @@ class SistemaLaboratorio:
 
 
                 elif opcion == "5":
-                    print(">>Aumentar Stock")
-                    id_uso=input("Introduce el ID del item a aumentar: ")
+                    print("\n>> AUMENTAR STOCK")
+                    id_aumentar = input("Introduce el ID del ítem a aumentar: ")
+
+
+                    item = self.gestorInventario.buscar_item_id(id_aumentar)
+
+                    if item is None:
+                        print(f"Error: No se ha encontrado ningún ítem con ID {id_aumentar}")
+                    else:
+
+                        print(f"Ítem encontrado: {item.nombre}")
+                        print(
+                            f"Stock actual: {item.cantidad} {item.unidad_medida} | Umbral crítico: {item.umbral_critico}")
+
+                        try:
+                            cantidad_anadir = int(input("¿Cuántas unidades deseas añadir al stock?: "))
+
+                            if cantidad_anadir <= 0:
+                                print("Error: La cantidad a añadir debe ser mayor a 0.")
+                            else:
+
+                                item.cantidad += cantidad_anadir
+
+                                print(f"¡¡¡¡¡Stock actualizado con éxito!!!!!")
+                                print(f"Nuevo stock de {item.nombre}: {item.cantidad} {item.unidad_medida}")
+
+                        except ValueError:
+                            print("Error: Por favor, introduce un número válido, sin letras ni símbolos.")
                 elif opcion == "6":
                     ejecutando_sistema = False
 

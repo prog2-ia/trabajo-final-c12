@@ -1,3 +1,4 @@
+from clases.base.clase_itemInventario import ItemInventario
 from clases.inventario.clase_sistemaLaboratorio import SistemaLaboratorio
 
 if __name__ == "__main__":
@@ -7,7 +8,7 @@ if __name__ == "__main__":
     print(">> Preparando base de datos inicial de prueba...\n")
 
 
-    lista_inicial = []
+    lista_inicial = [] #type:list[ItemInventario]
 
     for objeto in lista_inicial:
         app.gestorInventario.agregar_item(objeto)

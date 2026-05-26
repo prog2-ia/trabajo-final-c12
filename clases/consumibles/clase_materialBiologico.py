@@ -52,11 +52,6 @@ class MaterialBiologico(Consumible):
         print("Nivel de bioseguridad actualizado")
 
 
-    # cambia la temperatura de almacenamiento
-    def cambiar_temperatura(self, nueva_temp: int) -> None:
-        self.temperatura_almacenamiento = nueva_temp
-        print("Temperatura de almacenamiento actualizada")
-
 
     # compara si dos materiales son del mismo tipo de muestra
     def mismo_tipo(self, otro_material: "MaterialBiologico") -> bool:

@@ -43,6 +43,7 @@ class ItemInventario(ABC):
 
     # muestra toda la informacion del item
     def mostrar_info(self) -> None:
+        print(f"Clase: {type(self).__name__}")
         print(f"Id: {self.id_item}")
         print(f"Nombre: {self.nombre}")
         print(f"Cantidad: {self.cantidad}")
@@ -80,18 +81,6 @@ class ItemInventario(ABC):
             print(f"AVISO: {self.nombre} esta en nivel critico ({self.cantidad} {self.unidad_medida})")
         else:
             print(f"OK: {self.nombre} tiene stock suficiente ({self.cantidad} {self.unidad_medida})")
-
-
-    # cambia el nombre del item
-    def cambiar_nombre(self, nuevo_nombre: str) -> None:
-        self.nombre = nuevo_nombre
-        print("Nombre actualizado")
-
-
-    # cambia los requisitos de seguridad
-    def cambiar_requisitos_seguridad(self, nuevos_requisitos: str) -> None:
-        self.requisitos_seguridad = nuevos_requisitos
-        print("Requisitos de seguridad actualizados")
 
 
     # cambia el umbral critico

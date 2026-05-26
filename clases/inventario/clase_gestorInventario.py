@@ -1,5 +1,5 @@
 from clases.base.clase_itemInventario import ItemInventario
-
+import pickle
 
 #Definimos la clase GestorInventario
 class GestorInventario:
@@ -17,7 +17,6 @@ class GestorInventario:
         else:
             for item in self.items:
                 item.mostrar_info()
-                print("--------------------------------------\n")
 
 
     def buscar_item_id(self,id_buscado:str)->ItemInventario|None:
@@ -36,3 +35,21 @@ class GestorInventario:
         else:
             print(f"No se pudo borrar: No existe ningún item con el ID '{id_a_borrar}'.")
             return False
+
+
+# guarda el inventario completo en un fichero binario
+    def guardar_inventario_bin(self, ruta: str) -> None:
+        fichero = open(ruta, "wb")
+        pickle.dump(self.items, fichero)
+        fichero.close()
+        print(f"Inventario guardado en {ruta}")
+
+    # carga el inventario desde un fichero binario
+    def cargar_inventario_bin(self, ruta: str) -> None:
+        try:
+            fichero = open(ruta, "rb")
+            self.items = pickle.load(fichero)
+            fichero.close()
+            print(f"Inventario cargado desde {ruta}")
+        except FileNotFoundError:
+            raise FileNotFoundError(f"No se encontro el fichero {ruta}")

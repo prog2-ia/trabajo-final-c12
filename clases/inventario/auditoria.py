@@ -25,3 +25,25 @@ class Auditoria:
             for i,registro in enumerate( self.historial_uso,1):
                 print(f"-{registro}")
 
+# guarda el historial en un fichero de texto
+    def guardar_historial_txt(self, ruta: str) -> None:
+        fichero = open(ruta, "w", encoding="utf-8")
+        fichero.write(f"Historial de: {self.nombre}\n")
+        for registro in self.historial_uso:
+            fichero.write(registro + "\n")
+        fichero.close()
+        print(f"Historial guardado en {ruta}")
+
+    # carga el historial desde un fichero de texto
+    def cargar_historial_txt(self, ruta: str) -> None:
+        try:
+            fichero = open(ruta, "r", encoding="utf-8")
+            lineas = fichero.readlines()
+            fichero.close()
+            self.historial_uso = []
+            for linea in lineas:
+                if "|" in linea:
+                    self.historial_uso.append(linea.strip())
+            print(f"Historial cargado desde {ruta}")
+        except FileNotFoundError:
+            raise FileNotFoundError(f"No se encontro el fichero {ruta}")

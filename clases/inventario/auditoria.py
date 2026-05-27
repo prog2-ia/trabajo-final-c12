@@ -27,13 +27,12 @@ class Auditoria:
                 print(f"-{registro}")
 
 # guarda el historial en un fichero de texto
-    def guardar_historial_txt(self, ruta: str) -> None:
-        fichero = open(ruta, "w", encoding="utf-8")
-        fichero.write(f"Historial de: {self.nombre}\n")
-        for registro in self.historial_uso:
-            fichero.write(registro + "\n")
-        fichero.close()
-        print(f"Historial guardado en {ruta}")
+    def guardar_historial_txt(self, ruta) -> None:
+        with open(ruta, "a", encoding="utf-8") as fichero:
+            fichero.write(f"--- Movimiento de: {self.nombre} ---\n")
+            for registro in self.historial_uso:
+                fichero.write(registro + "\n")
+        print(f"Historial guardado de forma segura en 'historial_uso.txt'")
 
     # carga el historial desde un fichero de texto
     def cargar_historial_txt(self, ruta: str) -> None:

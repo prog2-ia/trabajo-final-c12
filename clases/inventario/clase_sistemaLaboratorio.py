@@ -16,6 +16,7 @@ class SistemaLaboratorio:
         print("=" * 50)
         print("Iniciando el sistema de almacenamiento del laboratorio")
         print("=" * 50)
+        self.gestorInventario.cargar_inventario_bin("/home/alvaro-imanol-castillo-romero/PycharmProjects/trabajo-final-c12/clases/inventario/inventario.dat")
 
         def menu()->None:
             # Variable para controlar el bucle principal del menú
@@ -135,6 +136,7 @@ class SistemaLaboratorio:
                                                                     fecha_caducidad, lote, formula_quimica,
                                                                     nivel_toxicidad, nivel_peligro)
                                 self.gestorInventario.agregar_item(nuevo_reactivo_critico)
+                                self.gestorInventario.guardar_inventario_bin("/home/alvaro-imanol-castillo-romero/PycharmProjects/trabajo-final-c12/clases/inventario/inventario.dat")
                             else:
 
                                 nuevo_reactivo = ReactivoQuimico(id_item, nombre, cantidad, unidad_medida,
@@ -142,7 +144,7 @@ class SistemaLaboratorio:
                                                              fecha_caducidad, lote, formula_quimica,
                                                              nivel_toxicidad)
                                 self.gestorInventario.agregar_item(nuevo_reactivo)
-
+                                self.gestorInventario.guardar_inventario_bin("/home/alvaro-imanol-castillo-romero/PycharmProjects/trabajo-final-c12/clases/inventario/inventario.dat")
 
 
                         if tipo_consumible=="2":
@@ -183,12 +185,14 @@ class SistemaLaboratorio:
                                                                 fecha_caducidad, lote,tipo_muestra,nivel_bioseguridad,temperatura_almacenamiento
                                                                 ,nivel_peligro)
                                 self.gestorInventario.agregar_item(nuevo_material_critico)
+                                self.gestorInventario.guardar_inventario_bin("/home/alvaro-imanol-castillo-romero/PycharmProjects/trabajo-final-c12/clases/inventario/inventario.dat")
                             else:
 
                                 nuevo_material = MaterialBiologico(id_item, nombre, cantidad, unidad_medida,
                                                          requisitos_seguridad, umbral_critico,
                                                          fecha_caducidad, lote,tipo_muestra,nivel_bioseguridad,temperatura_almacenamiento)
                                 self.gestorInventario.agregar_item(nuevo_material)
+                                self.gestorInventario.guardar_inventario_bin("/home/alvaro-imanol-castillo-romero/PycharmProjects/trabajo-final-c12/clases/inventario/inventario.dat")
 
 
 
@@ -242,6 +246,7 @@ class SistemaLaboratorio:
                             nuevo_item = EquipoSeguridad(id_item, nombre, cantidad,
                                                          requisitos_seguridad, umbral_critico,fecha_mantenimiento, ubicacion, certificado,estado)
                             self.gestorInventario.agregar_item(nuevo_item)
+                            self.gestorInventario.guardar_inventario_bin("/home/alvaro-imanol-castillo-romero/PycharmProjects/trabajo-final-c12/clases/inventario/inventario.dat")
                             print("Item añadido con éxito.")
 
 
@@ -265,6 +270,7 @@ class SistemaLaboratorio:
                                                                 fecha_mantenimiento,tipo_analisis,precision)
 
                             self.gestorInventario.agregar_item(nuevo_instrumento)
+                            self.gestorInventario.guardar_inventario_bin("/home/alvaro-imanol-castillo-romero/PycharmProjects/trabajo-final-c12/clases/inventario/inventario.dat")
                             print("Item añadido con éxito.")
 
                 elif opcion=="3":
@@ -290,6 +296,7 @@ class SistemaLaboratorio:
                                 motivo= input("Introduce el motivo de retiro: ")
 
                                 item.consumir_stock_critico(cantidad,usuario,motivo)
+                                item.guardar_historial_txt("/home/alvaro-imanol-castillo-romero/PycharmProjects/trabajo-final-c12/clases/inventario/historial_uso.txt")
                             except ValueError as e:
                                 print(f"Error en el siguiente dato: {e}")
 

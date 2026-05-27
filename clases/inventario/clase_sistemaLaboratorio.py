@@ -23,7 +23,9 @@ class SistemaLaboratorio:
             ejecutando_sistema = True
 
             while ejecutando_sistema:
-                print("\nBienvenido al Sistema de almacenamiento del Laboratorio, escoja una acción (1,2,3,4,5,6): ")
+                print("\n","*"*50)
+                print("Bienvenido al Sistema de almacenamiento del Laboratorio, escoja una acción (1,2,3,4,5,6): ")
+                print("*"*50)
                 print(
                     " 1: Mostrar Inventario\n 2: Añadir Item\n 3: Borrar Item\n 4: Registrar uso de un Item\n 5: Aumentar Stock\n 6: Salir del Sistema")
 
@@ -276,8 +278,9 @@ class SistemaLaboratorio:
                 elif opcion=="3":
                     print(">BORRAR ITEM")
                     id_borrar= input("Introduce el Id del Item a borrar:")
-                    self.gestorInventario.borrar_item(id_borrar)
-
+                    borrar=self.gestorInventario.borrar_item(id_borrar)
+                    if borrar:
+                        self.gestorInventario.guardar_inventario_bin("/home/alvaro-imanol-castillo-romero/PycharmProjects/trabajo-final-c12/clases/inventario/inventario.dat")
                 elif opcion =="4":
 
                     print(">> Registro de Uso")

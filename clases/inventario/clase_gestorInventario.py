@@ -42,7 +42,7 @@ class GestorInventario:
         fichero = open(ruta, "wb")
         pickle.dump(self.items, fichero)
         fichero.close()
-        print(f"Inventario guardado en 'inventario.dat")
+        print(f"Inventario actualizado en 'inventario.dat'")
 
     # carga el inventario desde un fichero binario
     def cargar_inventario_bin(self, ruta: str) -> None:

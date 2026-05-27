@@ -4,7 +4,10 @@ Este es el repositorio de nuestro proyecto final para la clase de Programación 
 El objetivo de este programa es simular el funcionamiento de un Sistema de administración de un laboratorio
 
 ## Estado del Proyecto
-Este código corresponde al **segundo avance** del proyecto. En esta etapa, hemos consolidado la arquitectura avanzada de clases y el sistema de herencias, enfocando los esfuerzos principales en el desarrollo y finalización de la interfaz de usuario por consola para interactuar con el laboratorio de forma intuitiva. El sistema ya cuenta con menús dinámicos, sobrecarga de operadores para comparar elementos y un control estricto de excepciones (`try-except`) ante datos inválidos. Actualmente, la información se administra en la memoria temporal durante la ejecución del programa, quedando como único objetivo pendiente la implementación de la persistencia de datos (almacenamiento en archivos) para la entrega final.
+El proyecto se encuentra **completamente desarrollado, testeado y cerrado**. Se han consolidado todos los requisitos de diseño arquitectónico y de persistencia de datos solicitados para la entrega final:
+* **Persistencia Híbrida Activa:** El sistema permite el almacenamiento y gestión de los datos tanto en **ficheros de texto** (`.txt`) para las bitácoras inalterables de auditorías de reactivos críticos, como en **ficheros binarios** (`pickle`) para salvaguardar el estado completo del inventario en tiempo real.
+* **Interfaz de Consola Avanzada:** Menús interactivos y dinámicos protegidos frente a fallos mediante un exhaustivo control de excepciones (`try-except`).
+* **Calidad de Software:** Tipado estricto certificado mediante el analizador estático **Mypy**.
 
 
 ## Conceptos de POO implementados
@@ -47,19 +50,35 @@ trabajo-final-c12/
 │       ├── clase_gestorInventario.py       # Motor del inventario (Lista de objetos)
 │       ├── auditoria.py                    # Mixin para control de uso crítico
 │       └── clase_sistemaLaboratorio.py     # Interfaz de usuario por consola
-│
+│       └── inventario.dat                  # Fichero Binario con los datos del Inventario
+│       └── historial_uso.txt               # Fichero de Texto donde se guardan los datos de Auditoria
+├── dist/
+│   └── main                                # Ejecutable directo del programa│
+│ 
 ├── main.py                                 # Script de inicio del sistema
 └── mypy.ini                                # Archivo de configuración estricta de tipos
 ````
 
 ##  Cómo ejecutar la demostración
 
-No se necesita instalar ninguna librería extra.
+Dispones de dos vías independientes para iniciar y evaluar el software:
 
-1. Abre la carpeta del proyecto en tu editor (PyCharm) o en la terminal.
-2. Ejecuta el archivo principal:
-   
-  ### **"python main.py"**
+### Método A: Ejecución Directa (Recomendado)
+Para facilitar el despliegue inmediato sin requerir un entorno de Python configurado, el sistema incluye una versión precompilada:
+
+Entra en la carpeta dist/.
+
+Ejecuta el archivo llamado **"main"** (haciendo doble clic o lanzándolo desde la terminal).
+
+### Método B: Ejecución desde Código Fuente
+Si prefieres inicializar el código fuente nativo:
+
+Abre la terminal en el directorio raíz del proyecto.
+
+Ejecuta el archivo de arranque principal:
+  
+                                      python main.py
+
 
 ## Equipo de Desarrollo
 Este proyecto fue desarrollado por:
